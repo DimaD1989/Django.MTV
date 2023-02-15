@@ -25,3 +25,5 @@ urlpatterns = [
     # path('toys/', index), # http:// 127.0.0.1:8000
     # path('cats/', categories), # http:// 127.0.0.1:8000/cats/
 ]
+
+hendler404 = pageNotFound
