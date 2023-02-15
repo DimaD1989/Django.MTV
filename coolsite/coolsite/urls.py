@@ -21,7 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('toys/', include('toys.urls')),
-    # path('toys/', index), # http:// 127.0.0.1:8000/toys/
+    path('', include('toys.urls')),
+    # path('toys/', index), # http:// 127.0.0.1:8000
     # path('cats/', categories), # http:// 127.0.0.1:8000/cats/
 ]
