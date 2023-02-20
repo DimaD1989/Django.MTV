@@ -72,3 +72,45 @@ def arhive(request, year):
     if int(year) >2020:
         #raise Http404
         return  redirect('/', permanent=True)
+
+
+* Урок 4.Определение моделей. Миграции: создание и выполнение.
+
+Заходим в toys/models.py
+
+Создаем класс 
+
+class Toys(models.Model):
+     title = models.CharField(max_length= 255)  # заголовок
+     content = models.TextField(blank=True) # содержание
+     photo = models.IntegerField(upload_to="photos/%Y/%m/%d/")
+     time_create = models.DateTimeField(auto_now_add=True)
+     time_update = models.DateTimeField(auto_now=True)
+     is_published = models.BooleanField(default=True)
+
+
+Настройка Mediaurl and Media
+
+Заходим в coolsite/settings.py и прописываем константы в самом низу
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media'
+
+
+Заходим в coolsite/urls.py в режиме отладки добавляем еще один маршрут,после urlpatterns, для статических данных граффических файлов
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+DEBUG = TRUE!!!
+
+команды в терминале
+ python manage.py makemigrations
+
+
+ python manage.py sqlmigrate toys 0001
+ 
+Создание таблицы в базе данных:
+
+ python manage.py migrate
+
