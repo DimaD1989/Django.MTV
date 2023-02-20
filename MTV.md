@@ -64,3 +64,11 @@ return HttpResponse(f"<h1>Статьи по  категориям</h1><p>{catid}
 hendler404=pageNotFound и создаем функцию
 
 заходим в toys/views.py
+
+
+Редиректы 301 и 302 заходим в views.py и создаем функцию с редиректом
+
+def arhive(request, year):
+    if int(year) >2020:
+        #raise Http404
+        return  redirect('/', permanent=True)
